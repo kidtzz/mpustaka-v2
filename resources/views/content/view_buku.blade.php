@@ -129,7 +129,7 @@
     //   })
     // }
 
-    // error alert
+    // error alertt
     function swal_error() {
       toastr.error('Something goes wrong !', 'Error !');
     }
