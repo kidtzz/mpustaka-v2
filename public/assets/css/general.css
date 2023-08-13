@@ -1,0 +1,5 @@
+@media (min-width: 992px) {
+  .header-fixed.subheader-fixed.subheader-enabled .wrapper {
+    padding-top: 0px !important;
+  }
+}

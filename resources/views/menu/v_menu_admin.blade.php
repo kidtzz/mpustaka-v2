@@ -50,6 +50,15 @@
                     <h4 class="menu-text">Custom</h4>
                     <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
                 </li>
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="/buku" class="menu-link">
+                        <span class="menu-icon fas fa-cog">
+
+                        </span>
+                        <span class="menu-text">Data Buku</span>
+
+                    </a>
+                </li>
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
@@ -63,44 +72,80 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Applications</span>
+                        <span class="menu-text">Transaksi</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="menu-submenu">
-        
+
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link">
-                                    <span class="menu-text">Applications</span>
+                                    <span class="menu-text">Transaksi</span>
                                 </span>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="/users" class="menu-link menu-toggle">
+                                <a href="" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Users</span>
-                                    <span class="menu-label">
-                                        <span class="label label-rounded label-primary"><?= $count_user ?></span>
-                                    </span>
-                                    
+                                    <span class="menu-text">Peminjam</span>
+
                                 </a>
-                                
+
                             </li>
-                    
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="" class="menu-link menu-toggle">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Kembali</span>
+
+                                </a>
+
+                            </li>
+
                         </ul>
                     </div>
                 </li>
-            
+
                 <li class="menu-item" aria-haspopup="true">
                     <a href="#" class="menu-link">
                         <span class="menu-icon fas fa-cog">
-                           
+
                         </span>
-                        <span class="menu-text">App Settings</span>
+                        <span class="menu-text">Anggota</span>
                     </a>
-                </li>	
-            
+                </li>
+
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="#" class="menu-link">
+                        <span class="menu-icon fas fa-cog">
+
+                        </span>
+                        <span class="menu-text">Berita</span>
+                    </a>
+                </li>
+
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="/users" class="menu-link">
+                        <span class="menu-icon fas fa-cog">
+                        </span>
+                        <span class="menu-text">User</span>
+                        <span class="menu-label">
+                            <span class="label label-rounded label-primary"><?= $count_user ?></span>
+                        </span>
+                    </a>
+                </li>
+                <li class="menu-item" aria-haspopup="true">
+                    <a href="#" class="menu-link">
+                        <span class="menu-icon fas fa-cog">
+
+                        </span>
+                        <span class="menu-text">Info Aplikasi</span>
+                    </a>
+                </li>
+
+
             </ul>
             <!--end::Menu Nav-->
         </div>

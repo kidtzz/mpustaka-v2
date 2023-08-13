@@ -3,9 +3,7 @@
         <div class="card">
             <div class="card-header">
                 <h2>{{$title}}</h2>
-                <div class="d-flex flex-row-reverse"><button
-                        class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewUser"><i
-                            class="fas fa-plus"></i>add data </button></div>
+                <div class="d-flex flex-row-reverse"><button class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewUser"><i class="fas fa-plus"></i>add data </button></div>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
@@ -43,8 +41,7 @@
 </div>
 
 <!-- Modal-->
-<div class="modal fade" id="modal-user" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="modal-user" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -81,7 +78,7 @@
 
 @push('scripts')
 <script>
-    $('document').ready(function () {
+    $('document').ready(function() {
         // success alert
         function swal_success() {
             Swal.fire({
@@ -131,7 +128,7 @@
                 },
             ]
         });
-        
+
         // csrf token
         $.ajaxSetup({
             headers: {
@@ -139,16 +136,16 @@
             }
         });
         // initialize btn add
-        $('#createNewUser').click(function () {
+        $('#createNewUser').click(function() {
             $('#saveBtn').val("create user");
             $('#user_id').val('');
             $('#formUser').trigger("reset");
             $('#modal-user').modal('show');
         });
         // initialize btn edit
-        $('body').on('click', '.editUser', function () {
+        $('body').on('click', '.editUser', function() {
             var user_id = $(this).data('id');
-            $.get("{{route('users.index')}}" + '/' + user_id + '/edit', function (data) {
+            $.get("{{route('users.index')}}" + '/' + user_id + '/edit', function(data) {
                 $('#saveBtn').val("edit-user");
                 $('#modal-user').modal('show');
                 $('#user_id').val(data.id);
@@ -158,7 +155,7 @@
             })
         });
         // initialize btn save
-        $('#saveBtn').click(function (e) {
+        $('#saveBtn').click(function(e) {
             e.preventDefault();
             $(this).html('Save');
 
@@ -167,7 +164,7 @@
                 url: "{{ route('users.store') }}",
                 type: "POST",
                 dataType: 'json',
-                success: function (data) {
+                success: function(data) {
 
                     $('#formUser').trigger("reset");
                     $('#modal-user').modal('hide');
@@ -175,7 +172,7 @@
                     table.draw();
 
                 },
-                error: function (data) {
+                error: function(data) {
                     swal_error();
                     $('#saveBtn').html('Save Changes');
                 }
@@ -183,7 +180,7 @@
 
         });
         // initialize btn delete
-        $('body').on('click', '.deleteUser', function () {
+        $('body').on('click', '.deleteUser', function() {
             var user_id = $(this).data("id");
 
             Swal.fire({
@@ -199,11 +196,11 @@
                     $.ajax({
                         type: "DELETE",
                         url: "{{route('users.store')}}" + '/' + user_id,
-                        success: function (data) {
+                        success: function(data) {
                             swal_success();
                             table.draw();
                         },
-                        error: function (data) {
+                        error: function(data) {
                             swal_error();
                         }
                     });
@@ -215,6 +212,5 @@
 
 
     });
-
 </script>
 @endpush
