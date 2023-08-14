@@ -18,7 +18,7 @@ class BukuController extends Controller
     public function index(Request $request)
     {
         $data = [
-            // 'count_data' => Buku::latest()->count(),
+            'count_user' => Buku::latest()->count(),
             'menu'       => 'menu.v_menu_admin',
             'content'    => 'content.view_buku',
             'title'    => 'Table Buku'

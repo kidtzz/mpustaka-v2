@@ -56,36 +56,44 @@
       <div class="modal-body">
         <form id="formBuku" name=formBuku">
           <div class="form-group">
+            <div class="row">
+              <div class="col-lg-6 col-md-6">
+                <input type="text" name="kode_buku" class="form-control" id="kode_buku" placeholder="Kode Buku" readonly>
+                <br>
 
-            <input type="text" name="kode_buku" class="form-control" id="kode_buku" placeholder="Kode Buku" readonly>
-            <br>
-            <div class="input_sih">
-              <input type="text" name="judul" class="form-control" id="judul" placeholder="Judul">
-              <div id="error_msg_judul">
+                <div class="input_sih">
+                  <input type="text" name="judul" class="form-control" id="judul" placeholder="Judul">
+                  <div id="error_msg_judul">
+                  </div>
+                  <br>
+                </div>
+
+                <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Deskripsi">
+                <br>
+
+                <input type="text" name="pengarang" class="form-control" id="pengarang" placeholder="Pengarang">
+                <br>
+
               </div>
-              <br>
-            </div>
+              <div class="col-lg-6 col-md-6">
 
 
-            <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Deskripsi">
-            <br>
 
-            <input type="text" name="pengarang" class="form-control" id="pengarang" placeholder="Pengarang">
-            <br>
+                <input type="text" name="penerbit" class="form-control" id="penerbit" placeholder="Penerbit">
+                <br>
 
-            <input type="text" name="penerbit" class="form-control" id="penerbit" placeholder="Penerbit">
-            <br>
+                <input type="date" name="tahunTerbit" class="form-control" id="tahunTerbit" placeholder="Tahun Terbit">
+                <br>
 
-            <input type="date" name="tahunTerbit" class="form-control" id="tahunTerbit" placeholder="Tahun Terbit">
-            <br>
+                <input type="number" name="jmlhHalaman" class="form-control" id="jmlhHalaman" placeholder="jumlah Halaman">
+                <br>
 
-            <input type="number" name="jmlhHalaman" class="form-control" id="jmlhHalaman" placeholder="jumlah Halaman">
-            <br>
-
-            <div class="input_sih">
-              <input type="text" name="gambar" class="form-control" id="gambar" placeholder="gambar">
-              <div id="error_msg_gambar"></div>
-              <br>
+                <div class="input_sih">
+                  <input type="text" name="gambar" class="form-control" id="gambar" placeholder="gambar">
+                  <div id="error_msg_gambar"></div>
+                  <br>
+                </div>
+              </div>
             </div>
 
             <input type="hidden" name="buku_id" id="buku_id" value="">
