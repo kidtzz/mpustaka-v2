@@ -65,6 +65,9 @@
             });
         }
     </script>
+
+    @include('parts.style')
+    @include('parts.script') @include('parts.custom-script')
 </head>
 <!--end::Head-->
 <!--begin::Body-->

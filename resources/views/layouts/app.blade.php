@@ -17,8 +17,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ url('assets/css/app.css') }}" type="text/css" />
     @include('parts.style')
-
 </head>
 
 <body>
@@ -80,7 +80,8 @@
             @yield('content')
         </main>
     </div>
-    @include('parts.script')
+    <!-- ini-tambahan -->
+    @include('parts.script') @include('parts.custom-script')
 </body>
 
 </html>

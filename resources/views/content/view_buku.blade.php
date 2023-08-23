@@ -54,7 +54,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="formBuku" name=formBuku">
+        <form id="formBuku" name=formBuku" action="POST " enctype="multipart/form-data">
+          @csrf
           <div class="form-group">
             <div class="row">
               <div class="col-lg-6 col-md-6">
@@ -68,7 +69,9 @@
                   <br>
                 </div>
 
-                <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Deskripsi">
+                <!-- <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Deskripsi"> -->
+
+                <textarea type="text" name="deskripsi" class="form-control" id="summernote"></textarea>
                 <br>
 
                 <input type="text" name="pengarang" class="form-control" id="pengarang" placeholder="Pengarang">
@@ -76,8 +79,6 @@
 
               </div>
               <div class="col-lg-6 col-md-6">
-
-
 
                 <input type="text" name="penerbit" class="form-control" id="penerbit" placeholder="Penerbit">
                 <br>
@@ -88,8 +89,12 @@
                 <input type="number" name="jmlhHalaman" class="form-control" id="jmlhHalaman" placeholder="jumlah Halaman">
                 <br>
 
+                <div class="img-thumbnail img-fluid" id="gambarShow">
+
+                </div>
+
                 <div class="input_sih">
-                  <input type="text" name="gambar" class="form-control" id="gambar" placeholder="gambar">
+                  <input type="file" name="gambar" class="form-control" id="gambar" placeholder="gambar">
                   <div id="error_msg_gambar"></div>
                   <br>
                 </div>
@@ -98,13 +103,14 @@
 
             <input type="hidden" name="buku_id" id="buku_id" value="">
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary font-weight-bold" id="saveBtn">Save changes</button>
+          </div>
         </form>
       </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary font-weight-bold" id="saveBtn">Save changes</button>
-      </div>
+
     </div>
   </div>
 </div>
@@ -197,21 +203,22 @@
     });
 
     // initialize btn save
-    $('#saveBtn').click(function(e) {
+    $('#formBuku').submit(function(e) {
       e.preventDefault();
-      $(this).html('Save');
+      var formData = new FormData(this);
       $.ajax({
-        data: $('#formBuku').serialize(),
+        type: 'POST',
         url: "{{ route('bukus.store') }}",
-        type: "POST",
-        dataType: 'json',
+        data: formData,
+        cache: false,
+        contentType: false,
+        processData: false,
         success: function(data) {
           $('#formBuku').trigger("reset");
           $('#modal-buku').modal('hide');
           toastr.success('Data Berhasil Disimpan', 'Success !');
           table.draw();
         },
-
         error: function(xhr, data) {
           if (xhr.responseJSON) {
             $('#error_msg_judul').html('');
@@ -242,9 +249,18 @@
         $('#penerbit').val(data.penerbit);
         $('#tahunTerbit').val(data.tahunTerbit);
         $('#gambar').val(data.gambar);
+        // $('#gambarShow').attr('src', data.gambar);
+        // $('#gambarShow').attr("alt", data.gambar);
         $('#jmlhHalaman').val(data.jmlhHalaman);
+        $('#gambarShow').append('<p class="text-danger">' + data.gambar + '</p>')
       })
     });
+
+    // <
+    // img width = " 250"
+    // height = "200"
+    // alt = "img"
+
 
     // initialize btn delete
     $('body').on('click', '.deleteBuku', function() {

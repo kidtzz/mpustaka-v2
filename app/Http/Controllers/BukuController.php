@@ -55,15 +55,14 @@ class BukuController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required|min:5',
-            // 'gambar' => 'required|mimes:jpg,jpeg,png',
-            // ], [
-            //     'judul.required' => 'judul tidak boleh kosong',
-            //     'gambar.required' => 'format gambar harus jpg, jpeg, png',
+            'gambar' => 'required|mimes:jpg,jpeg,png',
+        ], [
+            'judul.required' => 'judul tidak boleh kosong',
+            'gambar.required' => 'format gambar harus jpg, jpeg, png',
         ]);
 
-
-        // $file_name = $request->gambar->getClientOriginalName();
-        // $img = $request->gambar->storeAs('thumbnail/buku', $file_name);
+        $file_name = $request->gambar->getClientOriginalName();
+        $img = $request->gambar->storeAs('thumbnail/buku', $file_name);
         $number = mt_rand(1000, 9999);
         $kodeBuku = 'BUK' . $number;
 
@@ -82,7 +81,7 @@ class BukuController extends Controller
                     'pengarang' => $request->pengarang,
                     'penerbit' => $request->penerbit,
                     'tahunTerbit' => $request->tahunTerbit,
-                    'gambar' => $request->gambar,
+                    'gambar' => $img,
                     'jmlhHalaman' => $request->jmlhHalaman
 
                 ]
