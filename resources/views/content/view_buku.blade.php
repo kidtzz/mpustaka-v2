@@ -89,7 +89,7 @@
                 <input type="number" name="jmlhHalaman" class="form-control" id="jmlhHalaman" placeholder="jumlah Halaman">
                 <br>
 
-                <div class="img-thumbnail img-fluid" id="gambarShow">
+                <div class="" id="gambarShow">
 
                 </div>
 
@@ -239,6 +239,7 @@
     $('body').on('click', '.editBuku', function() {
       var buku_id = $(this).data('id');
       $.get("{{route('bukus.index')}}" + '/' + buku_id + '/edit', function(data) {
+
         $('#saveBtn').val("edit-buku");
         $('#modal-buku').modal('show');
         $('#buku_id').val(data.id);
@@ -248,20 +249,11 @@
         $('#pengarang').val(data.pengarang);
         $('#penerbit').val(data.penerbit);
         $('#tahunTerbit').val(data.tahunTerbit);
-        $('#gambar').val(data.gambar);
-        // $('#gambarShow').attr('src', data.gambar);
-        // $('#gambarShow').attr("alt", data.gambar);
         $('#jmlhHalaman').val(data.jmlhHalaman);
-        $('#gambarShow').append('<p class="text-danger">' + data.gambar + '</p>')
+        $('#gambarShow').html('<img src="{{ asset("storage/")}}' + '/' + data.gambar + '" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
       })
     });
-
-    // <
-    // img width = " 250"
-    // height = "200"
-    // alt = "img"
-
-
+    
     // initialize btn delete
     $('body').on('click', '.deleteBuku', function() {
       var buku_id = $(this).data("id");

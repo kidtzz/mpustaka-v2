@@ -62,7 +62,7 @@ class BukuController extends Controller
         ]);
 
         $file_name = $request->gambar->getClientOriginalName();
-        $img = $request->gambar->storeAs('thumbnail/buku', $file_name);
+        $img = $request->gambar->storeAs('/buku', $file_name);
         $number = mt_rand(1000, 9999);
         $kodeBuku = 'BUK' . $number;
 
