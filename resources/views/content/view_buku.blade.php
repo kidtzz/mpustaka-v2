@@ -29,8 +29,6 @@
                 <td>{{$r_bukus->tahunTerbit}}</td>
                 <td>{{$r_bukus->jmlHalaman}}</td>
                 <td>
-
-                  <div class="btn btn-success pinjamBuku" data-id="{{$r_bukus->id}}">Pinjam</div>
                   <div class="btn btn-success editBuku" data-id="{{$r_bukus->id}}">Edit</div>
                   <div class="btn btn-danger deleteBuku" data-id="{{$r_bukus->id}}">Delete</div>
                 </td>
@@ -92,8 +90,8 @@
                 <br>
 
                 <div class="" id="gambarShow">
-                </div>
 
+                </div>
 
                 <div class="input_sih">
                   <input type="file" name="gambar" class="form-control" id="gambar" placeholder="gambar">
@@ -239,24 +237,6 @@
           $('#saveBtn').html('Save Changes');
         },
       });
-    });
-    // initialize btn get add peminjam
-    $('body').on('click', '.pinjamBuku', function() {
-      var buku_id = $(this).data('id');
-      $.get("{{route('bukus.index')}}" + '/' + buku_id + '/edit', function(data) {
-        $('#saveBtn').val("edit-buku");
-        $('#modal-buku').modal('show');
-        $('#buku_id').val(data.id);
-        $('#kode_buku').val(data.kode_buku);
-        $('#judul').val(data.judul);
-        $('#deskripsi').val(data.deskripsi);
-        $('#pengarang').val(data.pengarang);
-        $('#penerbit').val(data.penerbit);
-        $('#tahunTerbit').val(data.tahunTerbit);
-        $('#jmlhHalaman').val(data.jmlhHalaman);
-        $('#gambarShow').html('<div class="hideGmabar"><img src="{{ asset("storage/")}}' + '/' + data.gambar + '" alt="" class="responsive-img" style="height: 132px; width: 132px;"> </div>');
-      })
-
     });
 
     // initialize btn edit
