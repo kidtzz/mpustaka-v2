@@ -31,8 +31,11 @@ class BukuController extends Controller
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
 
-                    $btn = '<div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="btn btn-sm btn-icon btn-outline-success btn-circle mr-2 edit editBuku"><i class=" fi-rr-edit"></i></div>';
-                    $btn = $btn . ' <div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-sm btn-icon btn-outline-danger btn-circle mr-2 deleteBuku"><i class="fi-rr-trash"></i></div>';
+                    $btn2 = '<div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="btn btn-sm btn-icon btn-outline-success btn-circle mr-2 edit pinjamBuku"><i class=" fi-rr-add"></i></div>';
+
+                    $btn = '<div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="btn btn-sm btn-icon btn-outline-warning btn-circle mr-2 edit editBuku"><i class=" fi-rr-edit"></i></div>';
+
+                    $btn = $btn2 . $btn . ' <div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-sm btn-icon btn-outline-danger btn-circle mr-2 deleteBuku"><i class="fi-rr-trash"></i></div>';
 
                     return $btn;
                 })

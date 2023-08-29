@@ -29,6 +29,8 @@
                 <td>{{$r_bukus->tahunTerbit}}</td>
                 <td>{{$r_bukus->jmlHalaman}}</td>
                 <td>
+
+                  <div class="btn btn-success pinjamBuku" data-id="{{$r_bukus->id}}">Pinjam</div>
                   <div class="btn btn-success editBuku" data-id="{{$r_bukus->id}}">Edit</div>
                   <div class="btn btn-danger deleteBuku" data-id="{{$r_bukus->id}}">Delete</div>
                 </td>
@@ -69,9 +71,9 @@
                   <br>
                 </div>
 
-                <!-- <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Deskripsi"> -->
-
-                <textarea type="text" name="deskripsi" class="form-control" id="summernote"></textarea>
+                <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Deskripsi">
+                <!-- 
+                <textarea type="text" name="deskripsi" class="form-control" id="summernote"></textarea> -->
                 <br>
 
                 <input type="text" name="pengarang" class="form-control" id="pengarang" placeholder="Pengarang">
@@ -90,8 +92,8 @@
                 <br>
 
                 <div class="" id="gambarShow">
-
                 </div>
+
 
                 <div class="input_sih">
                   <input type="file" name="gambar" class="form-control" id="gambar" placeholder="gambar">
@@ -200,6 +202,10 @@
       $('#buku_id').val('');
       $('#formBuku').trigger("reset");
       $('#modal-buku').modal('show');
+      if ($('#gambarShow')) {
+        $('.hideGmabar').remove();
+      }
+
     });
 
     // initialize btn save
@@ -234,12 +240,10 @@
         },
       });
     });
-
-    // initialize btn edit
-    $('body').on('click', '.editBuku', function() {
+    // initialize btn get add peminjam
+    $('body').on('click', '.pinjamBuku', function() {
       var buku_id = $(this).data('id');
       $.get("{{route('bukus.index')}}" + '/' + buku_id + '/edit', function(data) {
-
         $('#saveBtn').val("edit-buku");
         $('#modal-buku').modal('show');
         $('#buku_id').val(data.id);
@@ -250,10 +254,30 @@
         $('#penerbit').val(data.penerbit);
         $('#tahunTerbit').val(data.tahunTerbit);
         $('#jmlhHalaman').val(data.jmlhHalaman);
-        $('#gambarShow').html('<img src="{{ asset("storage/")}}' + '/' + data.gambar + '" alt="" class="responsive-img" style="height: 132px; width: 132px;">');
+        $('#gambarShow').html('<div class="hideGmabar"><img src="{{ asset("storage/")}}' + '/' + data.gambar + '" alt="" class="responsive-img" style="height: 132px; width: 132px;"> </div>');
       })
+
     });
-    
+
+    // initialize btn edit
+    $('body').on('click', '.editBuku', function() {
+      var buku_id = $(this).data('id');
+      $.get("{{route('bukus.index')}}" + '/' + buku_id + '/edit', function(data) {
+        $('#saveBtn').val("edit-buku");
+        $('#modal-buku').modal('show');
+        $('#buku_id').val(data.id);
+        $('#kode_buku').val(data.kode_buku);
+        $('#judul').val(data.judul);
+        $('#deskripsi').val(data.deskripsi);
+        $('#pengarang').val(data.pengarang);
+        $('#penerbit').val(data.penerbit);
+        $('#tahunTerbit').val(data.tahunTerbit);
+        $('#jmlhHalaman').val(data.jmlhHalaman);
+        $('#gambarShow').html('<div class="hideGmabar"><img src="{{ asset("storage/")}}' + '/' + data.gambar + '" alt="" class="responsive-img" style="height: 132px; width: 132px;"> </div>');
+      })
+
+    });
+
     // initialize btn delete
     $('body').on('click', '.deleteBuku', function() {
       var buku_id = $(this).data("id");
