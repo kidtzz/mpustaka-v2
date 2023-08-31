@@ -187,6 +187,9 @@
       ]
     });
 
+    $('#count_buku').html('<span class="label label-rounded label-primary"> ' +
+      <?= $count_buku ?> + ' </span>')
+
     // csrf token
     $.ajaxSetup({
       headers: {

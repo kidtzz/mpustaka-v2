@@ -129,6 +129,9 @@
             ]
         });
 
+        $('#count_user').html('<span class="label label-rounded label-primary"> ' +
+            <?= $count_user ?> + ' </span>')
+
         // csrf token
         $.ajaxSetup({
             headers: {

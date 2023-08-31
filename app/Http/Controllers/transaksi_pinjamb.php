@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Buku;
+use App\Models\Pinjam;
 use Illuminate\Http\Request;
 use DataTables;
 use Illuminate\Support\Facades\Validator;
 
-class BukuController extends Controller
+class transaksi_pinjamb extends Controller
 {
     //
     public function __construct()
@@ -18,22 +18,22 @@ class BukuController extends Controller
     public function index(Request $request)
     {
         $data = [
-            'count_buku' => Buku::latest()->count(),
+            'count_pinjam' => Pinjam::latest()->count(),
             'menu'       => 'menu.v_menu_admin',
-            'content'    => 'content.view_buku',
-            'title'    => 'Table Buku'
+            'content'    => 'content.view_pinjam',
+            'title'    => 'Table pinjam'
         ];
 
         if ($request->ajax()) {
-            $q_buku = Buku::select('*')->where('id', '!=', 0)
+            $q_pinjam = Pinjam::select('*')->where('id', '!=', 0)
                 ->orderByDesc('created_at');
-            return Datatables::of($q_buku)
+            return Datatables::of($q_pinjam)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
 
-                    $btn = '<div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="btn btn-sm btn-icon btn-outline-success btn-circle mr-2 edit editBuku"><i class=" fi-rr-edit"></i></div>';
+                    $btn = '<div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="btn btn-sm btn-icon btn-outline-success btn-circle mr-2 edit edit_pinjam"><i class=" fi-rr-edit"></i></div>';
 
-                    $btn =  $btn . ' <div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-sm btn-icon btn-outline-danger btn-circle mr-2 deleteBuku"><i class="fi-rr-trash"></i></div>';
+                    $btn =  $btn . ' <div data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-sm btn-icon btn-outline-danger btn-circle mr-2 delete_pinjam"><i class="fi-rr-trash"></i></div>';
 
                     return $btn;
                 })
@@ -56,10 +56,7 @@ class BukuController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required|min:5',
-            'gambar' => 'required|mimes:jpg,jpeg,png',
-        ], [
-            'judul.required' => 'judul tidak boleh kosong',
-            'gambar.required' => 'format gambar harus jpg, jpeg, png',
+            'gambar' => 'required|mimes:jpg,jpeg,png'
         ]);
 
         $file_name = $request->gambar->getClientOriginalName();
@@ -73,7 +70,7 @@ class BukuController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             ), 400);
         } else {
-            Buku::updateOrCreate(
+            Pinjam::updateOrCreate(
                 ['id' => $request->buku_id],
                 [
                     'kode_buku' => $kodeBuku,
@@ -93,7 +90,7 @@ class BukuController extends Controller
 
     public function edit($id)
     {
-        $buku = Buku::find($id);
+        $buku = Pinjam::find($id);
         return response()->json($buku);
     }
 
@@ -103,7 +100,7 @@ class BukuController extends Controller
 
     public function destroy($id)
     {
-        Buku::find($id)->delete();
+        Pinjam::find($id)->delete();
         return response()->json(['success' => 'data berhasil didelete']);
     }
 }

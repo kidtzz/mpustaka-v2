@@ -53,9 +53,12 @@
                 <li class="menu-item" aria-haspopup="true">
                     <a href="/buku" class="menu-link">
                         <span class="menu-icon fas fa-cog">
-
                         </span>
                         <span class="menu-text">Data Buku</span>
+                        <span class="menu-label">
+                            <div id="count_buku">
+                            </div>
+                        </span>
 
                     </a>
                 </li>
@@ -84,12 +87,15 @@
                                 </span>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="" class="menu-link menu-toggle">
+                                <a href="/pinjam" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
                                     <span class="menu-text">Peminjam</span>
-
+                                    <span class="menu-label">
+                                        <div id="count_pinjam">
+                                        </div>
+                                    </span>
                                 </a>
 
                             </li>
@@ -132,7 +138,8 @@
                         </span>
                         <span class="menu-text">User</span>
                         <span class="menu-label">
-                            <span class="label label-rounded label-primary"><?= $count_user ?></span>
+                            <div id="count_user">
+                            </div>
                         </span>
                     </a>
                 </li>
